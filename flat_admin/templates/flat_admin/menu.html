@@ -1,0 +1,46 @@
+{% load i18n flat_admin_menu %}
+{% load url from future %}
+
+<div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+        {% block menu_home %}
+            {% url 'admin:index' as index_url %}
+            <li{% if index_url == request.path %} class="active"{% endif %}>
+                <a href="{{ index_url }}"><i class="icon-home icon-white"></i> {% trans 'Home' %}
+                </a>
+            </li>
+        {% endblock %}
+        {% get_menu request as app_list %}
+        {% if app_list %}
+            {% for app in app_list %}
+                <li{{ app.is_active|yesno:' class=active,' }}>
+                    <a href="#{{ app.label }}" data-toggle="tab">
+                        <i class="{% firstof app.icon 'icon-chevron-right' %} icon-white"></i>
+                        {% trans app.label|capfirst %}</a>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    <div class="tab-content">
+        {% get_menu request as app_list %}
+        {% if app_list %}
+            {% for app in app_list %}
+                <div class="tab-pane {{ app.is_active|yesno:' active,' }}" id="{{ app.label }}">
+                    {% if app.models %}
+                        <ul class="unstyled">
+                            {% for model in app.models %}
+                                <li{{ model.is_active|yesno:' class=active,' }}>
+                                    <a
+                                        href="{{ model.url }}"><i class="{% firstof app.icon 'icon-chevron-right' %} icon-white"></i> {{ model.label }}</a> <a href="{{ model.url }}add/"
+                                        ><i
+                                        class="icon-plus-sign icon-white"></i></a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+</div>
+

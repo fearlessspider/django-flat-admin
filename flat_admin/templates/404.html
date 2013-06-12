@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Page not found' %}{% endblock %}
+
+{% block error %}{% trans 'error'|capfirst %} 404{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></div>
+{% endblock %}
+
+{% block content %}
+    {% trans "We're sorry, but the requested page could not be found." %}
+{% endblock %}

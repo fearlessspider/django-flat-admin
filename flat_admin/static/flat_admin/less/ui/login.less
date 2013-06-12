@@ -1,0 +1,58 @@
+//
+// Login
+// --------------------------------------------------
+
+@import '../variables';
+@import '../mixins';
+
+.login {
+    background: url("../img/coffee.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    padding: 0;
+    #wrap {
+        background: none;
+    }
+    #content-main {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        .border-radius(@baseBorderRadius);
+
+        position: absolute;
+        width: 340px;
+        left: 50%;
+        top: 35%;
+        margin-left: -170px; /* Half the width of the DIV tag */
+        margin-top: -100px; /* Half the height of the DIV tag */
+        h1 {
+            color: @blueDark;
+            padding: 0 15px;
+            font-size: 26px;
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            margin: 0;
+            i {
+                margin-right: 5px;
+                margin-top: 10px;
+            }
+        }
+        form {
+            margin: 15px 15px 0;
+            input[type=text], input[type=password] {
+                width: 95%;
+            }
+            input[type=submit] {
+              width: 100%;
+            }
+        }
+        .submit-row {
+            margin: 10px -15px 5px -15px;
+            padding: 10px 15px;
+            border-top: 1px solid #eee;
+        }
+        .control-group {
+            border: 0;
+        }
+    }
+}

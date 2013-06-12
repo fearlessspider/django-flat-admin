@@ -1,0 +1,74 @@
+//
+// Dashboard
+// --------------------------------------------------
+
+
+.popover {
+    max-width: 75%;
+    .popover-title {
+        font-size: 24px;
+    }
+    .tabbable .nav > li {
+        float: none;
+    }
+    .tab-pane li > a, .tabbable .nav > li > a {
+        padding: 5px 15px 5px 0;
+        border: none;
+
+    }
+    .tab-pane li > a {
+        display: inline-block;
+    }
+    .tabbable .nav > .active > a > [class^="icon-"] {
+        background-image: url("@{iconSpritePath}");
+    }
+    .tabbable .nav > li > a:hover {
+        color: @green;
+    }
+    .tab-pane li > a, .tabbable .nav > li.active > a:hover {
+        color: #ffffff;
+    }
+    .tab-pane li > a:hover {
+        color: @blueDark;
+      text-decoration: none;
+    }
+    .tab-pane li > a > i {
+        margin-top: 2px;
+    }
+    .tabs-left>.nav-tabs {
+      border: none;
+      background: @blueDark;
+    }
+    .tab-content {
+      background: @green;
+      height: 100%;
+    }
+    .tabbable {
+        background: @green;
+    }
+}
+    .popover.bottom .arrow {
+        left: 95px;
+    }
+.alert {
+  a {
+    color: @blueDark;
+  }
+}
+.action-box {
+  button {
+    margin-bottom: 3px;
+  }
+  a {
+    margin-top: -3px;
+  }
+}
+.form-horizontal .form-actions.action-box {
+  padding-left: 20px;
+ }
+
+.controls {
+  input, textarea {
+    width: 95%;
+  }
+}

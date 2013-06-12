@@ -1,0 +1,159 @@
+/* CALENDARS & CLOCKS */
+
+.calendarbox, .clockbox {
+    margin: 5px auto;
+    font-size: 11px;
+    width: 16em;
+    text-align: center;
+    background: @grayLighter;
+    position: relative;
+    z-index: 100;
+    .border-radius(@baseBorderRadius);
+    .box-shadow(0 5px 10px rgba(0,0,0,.2));
+    h2, caption {
+        .border-top-radius(@baseBorderRadius);
+        border-bottom: 1px solid #ddd;
+        margin: 0;
+        padding: 3px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.clockbox {
+    width: auto;
+}
+
+.calendar {
+    margin: 0;
+    padding: 0;
+}
+
+.calendar table {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.calendar th {
+    font-size: 10px;
+    color: #666;
+    padding: 2px 3px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.calendar td {
+    font-size: 11px;
+    text-align: center;
+    padding: 0;
+    border-top: 1px solid #eee;
+    border-bottom: none;
+}
+
+.calendar td.selected a {
+    background: @grayLight;
+}
+
+.calendar td.nonday {
+    background: @blueDark;
+}
+
+.calendar td.today a {
+    background: @gray;
+    font-weight: bold;
+}
+
+.calendar td a, .timelist a {
+    display: block;
+    padding: 2px 4px;
+    text-decoration: none;
+    color: #444;
+}
+
+.calendar td a:hover, .timelist a:hover {
+    color: #4a4a4a;
+}
+
+.calendar td a:active, .timelist a:active {
+    background: #5295b0;
+    color: white;
+}
+
+.calendarnav {
+    font-size: 10px;
+    text-align: center;
+    color: #4a4a4a;
+    margin: 0;
+    padding: 1px 3px;
+}
+
+.calendarnav a:link, #calendarnav a:visited, #calendarnav a:hover {
+    color: #999;
+}
+
+.calendar-shortcuts {
+    font-size: 11px;
+    line-height: 11px;
+    border-top: 1px solid #eee;
+    padding: 3px 0 4px;
+    color: #4a4a4a;
+    a {
+        display: inline-block;
+        padding: 2px 0;
+    }
+}
+
+.calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 3px 8px 4px;
+    color: #4a4a4a;
+}
+
+.calendarnav-previous:hover, .calendarnav-next:hover {
+    background: #5295b0;
+}
+
+.calendarnav-previous {
+    top: 0;
+    left: 0;
+    .border-top-left-radius(@baseBorderRadius);
+}
+
+.calendarnav-next {
+    top: 0;
+    right: 0;
+    .border-top-right-radius(@baseBorderRadius);
+}
+
+.calendar-cancel {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+    font-size: 11px;
+    border-top: 1px solid #ddd;
+}
+
+.calendar-cancel:hover {
+//    background: #e1e1e1 url(../img/nav-bg-reverse.gif) 0 50% repeat-x;
+}
+
+.calendar-cancel a {
+    color: black;
+    display: block;
+}
+
+ul.timelist, .timelist li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.timelist a {
+    padding: 2px;
+}

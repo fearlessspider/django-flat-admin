@@ -1,0 +1,212 @@
+{% load admin_static %}
+{% load flat_admin_tags %}
+{% load url from future %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+    <title>{% block title %}{{ title }} | {{ 'ADMIN_NAME'|flat_admin_config }}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% endblock %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'flat_admin/css/bootstrap.css' %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'flat_admin/css/responsive.css' %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'flat_admin/css/flat_admin.css' %}" media="all">
+    {% block extrastyle %}{% endblock %}
+    {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" type="text/css"
+              href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
+    {% if 'SHOW_REQUIRED_ASTERISK'|flat_admin_config %}
+        <style type="text/css">.required:after {
+            content: '*';
+            margin: 0 0 0 5px;
+            position: absolute;
+            color: #E74C3C;
+        }</style>
+    {% endif %}
+    <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+
+    {% block extrahead %}{% endblock %}
+    {% block blockbots %}
+        <meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
+
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+<div id="wrap">
+
+    <!-- Container -->
+    {% block container %}
+        <div id="container">
+
+            {% block header %}
+                {% if not is_popup %}
+                    <!-- Header -->
+                    <div class="navbar navbar-inverse navbar-fixed-top">
+                        <div class="navbar-inner">
+                            <div class="container-fluid">
+                                <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                                        data-target=".nav-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="{% url 'admin:index' %}" class="brand">
+                                    {% block branding %}{{ 'ADMIN_NAME'|flat_admin_config }}{% endblock %}</a>
+                                {% if request.user.is_authenticated %}
+                                    <div id="apps-block" class="span2 pull-left">
+                                        <a id="apps" href="#" class="btn btn-primary" data-toggle="popover"
+                                           data-content='{% include 'flat_admin/menu.html' %}'
+                                           data-original-title="Apps &amp; Models">Apps</a>
+                                    </div>
+                                {% endif %}
+                                <div class="nav-collapse collapse">
+                                    {% block header_time %}
+                                        <p class="navbar-text pull-left">
+                                            <i class="icon-time icon-white"></i>
+                                            <span class="date"> {% flat_admin_date %}</span>
+                                            <span class="time" id="clock">{% flat_admin_time %}</span>
+                                        </p>
+                                    {% endblock %}
+
+                                    {% block header_content %}
+                                    {% endblock %}
+
+                                    {% if user.is_active and user.is_staff %}
+                                        <p class="navbar-text pull-right">
+                                            {% trans 'Welcome,' %}
+                                            <strong>
+                                                {% filter force_escape %}
+                                                    {% firstof user.first_name user.username %}{% endfilter %}</strong>.
+                <span class="user-links">
+                {% block userlinks %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}" class="navbar-link">{% trans 'Documentation' %}</a>
+                        <span class="separator">|</span>
+                    {% endif %}
+                    <a href="{% url 'admin:password_change' %}" class="navbar-link">{% trans 'Change password' %}</a>
+                    <span class="separator">|</span>
+                    <a href="{% url 'admin:logout' %}" class="navbar-link">{% trans 'Log out' %}</a>
+                    </span>
+                {% endblock %}
+                                        </p>
+                                    {% endif %}
+                                    {% block nav-global %}{% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- END Header -->
+            {% endblock %}
+
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <!-- START Main -->
+                    {% block content-center %}
+                        <div class="span12">
+
+                            {% if not is_popup %}
+                                {% block breadcrumbs %}
+                                    <ul class="breadcrumb">
+                                        <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                                            {% if title %}
+                                                <span class="divider">&raquo;</span>
+                                                </li>
+                                                <li class="active">
+                                                {{ title }}
+                                            {% endif %}
+                                            </li>
+                                    </ul>
+                                {% endblock %}
+                            {% endif %}
+
+                            {% block messages %}
+                                {% if messages %}
+
+                                    {% for message in messages %}
+                                        <div class="alert alert-{% firstof message.tags 'info' %}">
+                                            <button class="close" data-dismiss="alert">×</button>
+                                            <strong>
+                                                {% if message.tags %}{{ message.tags|capfirst }}{% else %}
+                                                    Message{% endif %}!</strong>
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endblock messages %}
+
+                            <!-- Content -->
+                            <div id="content">
+                                {% block pretitle %}{% endblock %}
+                                {% block content_title %}{% if title %}
+                                    <h2 class="content-title">{{ title }}</h2>
+                                {% endif %}{% endblock %}
+                                {% block content %}
+                                    {% block object-tools %}{% endblock %}
+                                    {{ content }}
+                                    {% block sidebar_content %}
+                                        {% block sidebar %}{% endblock %}
+                                    {% endblock %}
+                                {% endblock %}
+                            </div>
+                            <!-- END Content -->
+                        </div>
+                    {% endblock %}
+                    <!-- END Main -->
+
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    <div class="push"></div>
+</div>
+
+{% block footer %}
+    {% if not is_popup %}
+        <div id="footer" class="footer">
+            <div class="content">
+                <div class="tools">
+                    {% block footer_links %}
+                        <a href="http://eggforsale.com/support/" target="_blank" class="icon"><i
+                                class="icon-question-sign"></i>Support</a>
+                        <a href="http://eggforsale.com/pricing/" target="_blank" class="icon"><i
+                                class="icon-bookmark"></i>Licence</a>
+                        <a href="http://github.com/eggforsale/django-flat-admin/issues" target="_blank" class="icon"><i
+                                class="icon-comment"></i>Report a bug</a>
+                    {% endblock %}
+                </div>
+
+                <div class="copyright">
+                    {% block copyright %}
+                        Copyright &copy; 2013 {{ 'ADMIN_DOMAIN'|flat_admin_config }}<br>Developed by
+                        <a href="http://eggforsale.com" target="_blank">EggForSale.com</a>
+                    {% endblock %}
+                </div>
+
+                <div class="branding">{% block footer_branding %}
+                    {% with 'ADMIN_NAME'|flat_admin_config as admin_name %}
+                        {{ admin_name }}
+                        {% if admin_name == 'Django Flat Admin' %}
+                            v{{ 'VERSION'|flat_admin_config }}
+                        {% endif %}
+                    {% endwith %}
+                {% endblock %}</div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+<script src="{% static 'flat_admin/js/jquery-1.10.1.min.js' %}"></script>
+
+<script src="{% static 'flat_admin/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'flat_admin/js/jquery.tweet.js' %}"></script>
+<script src="{% static 'flat_admin/js/flat_admin.js' %}"></script>
+<script>
+    $('#apps').popover({placement: "bottom", html: true});
+</script>
+
+{% block extrajs %}{% endblock %}
+
+</body>
+</html>
