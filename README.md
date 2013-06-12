@@ -1,4 +1,4 @@
-django-flat-admin
+Django Flat Admin
 =================
 
 Modern Flat theme for Django Admin
