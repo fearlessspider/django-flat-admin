@@ -26,6 +26,8 @@
     {% block extrahead %}{% endblock %}
     {% block blockbots %}
         <meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
+<script src="{% static 'flat_admin/js/jquery-1.10.1.min.js' %}"></script>
+<script src="{% static 'flat_admin/js/flat_admin.js' %}"></script>
 
 </head>
 {% load i18n %}
@@ -197,11 +199,8 @@
     {% endif %}
 {% endblock %}
 
-<script src="{% static 'flat_admin/js/jquery-1.10.1.min.js' %}"></script>
-
 <script src="{% static 'flat_admin/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'flat_admin/js/jquery.tweet.js' %}"></script>
-<script src="{% static 'flat_admin/js/flat_admin.js' %}"></script>
 <script>
     $('#apps').popover({placement: "bottom", html: true});
 </script>
