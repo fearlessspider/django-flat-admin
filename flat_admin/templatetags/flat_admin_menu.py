@@ -305,10 +305,10 @@ class Menu(object):
         keys = ['label', 'url', 'permissions', 'is_active', 'blank']
         self.fill_keys(model, keys)
 
-    def fill_keys(self, dict, keys):
+    def fill_keys(self, dictionary, keys):
         for key in keys:
-            if key not in dict:
-                dict[key] = None
+            if key not in dictionary:
+                dictionary[key] = None
 
     def user_has_permission(self, perms):
         perms = perms if isinstance(perms, (list, tuple)) else (perms,)
