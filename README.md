@@ -12,6 +12,11 @@ Features
 * Simple installation
 * CKEditor for textareas
 
+Screenshots
+=================
+![Alt text][menu]
+[menu]: http://www.eggforsale.com/site_media/media/1ce2f618/products/screenshots/5_3.png.1170x658_q100_crop.jpg
+
 License
 =================
 
