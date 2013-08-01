@@ -34,3 +34,5 @@ Support or Contact
 =================
 
 Having trouble with Django Flat Admin? Check out the detail page at http://www.eggforsale.com or contact support@eggforsale.com and we’ll help you sort it out.
+
+Documentation at https://django-flat-admin.readthedocs.org/en/latest/
