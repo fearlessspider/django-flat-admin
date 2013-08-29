@@ -1,7 +1,7 @@
 Django Flat Admin
 =================
 
-Django Flat Admin is an admin theme for Django Framework. It allows for registering custom database options and provides a clean and modern web interface. The application is designed to be responsive and adopt to mobile and tablet devices. To achieve this we have used the twitter bootstrap 3.x framework grid. The application is constantly evolving so make sure you checkout github for the latest updates and fixes.
+Django Flat Admin is an admin theme for Django Framework. It allows for registering custom database options and provides a clean and modern web interface. The application is designed to be responsive and adopt to mobile and tablet devices. To achieve this we have used the twitter bootstrap 2.x framework grid. The application is constantly evolving so make sure you checkout github for the latest updates and fixes.
 
 Features
 =================
