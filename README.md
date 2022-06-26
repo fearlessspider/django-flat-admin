@@ -21,18 +21,20 @@ Screenshots
 Authors and Contributors
 =================
 
-bespider (@bespider) for EggForSale (@eggforsale) created Django Flat Admin.
+bespider (@bespider) for EggForSale (@fearlessspider) created Django Flat Admin.
 
 Licence
 =================
 
 Django Flat Admin is licensed under Creative Commons Attribution-NonCommercial 3.0 license.
 
-Licence and pricing: http://www.eggforsale.com
+Licence and pricing: https://www.fearlessspider.com
 
 Support or Contact
 =================
 
-Having trouble with Django Flat Admin? Check out the detail page at http://www.eggforsale.com or contact support@eggforsale.com and we’ll help you sort it out.
+Having trouble with Django Flat Admin? Check out the detail page at https://www.fearlessspider.com or contact support@fearlessspider.com and we’ll help you sort it out.
 
 Documentation at https://django-flat-admin.readthedocs.org/en/latest/
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L37QTKJ)
